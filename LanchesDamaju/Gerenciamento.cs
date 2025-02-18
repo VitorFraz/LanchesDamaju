@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace LanchesDamaju
 {
-    public partial class Form1 : Form
+    public partial class Gerenciamento : Form
     {
-        public Form1()
+        public Gerenciamento()
         {
             InitializeComponent();
         }
@@ -229,7 +229,7 @@ namespace LanchesDamaju
                             consulta.Open();
 
                             //Consulta SQL para selecionar os clientes
-                            string listagem = "DELETE FROM tb_clientes WHERE id_clientes = @id_clientes";
+                            string listagem = "DELETE FROM tb_clientes WHERE id_Cliente = @id_Cliente";
 
                             using (MySqlCommand cmd = new MySqlCommand(listagem, consulta))
                             {
@@ -273,7 +273,7 @@ namespace LanchesDamaju
                     consulta.Open();
 
                     //Consulta SQL para selecionar os clientes
-                    string listagem = "SELECT id_Clientes, nome, senha, email, cpf, cep, numero, imagem telefone FROM tb_clientes";
+                    string listagem = "SELECT id_Cliente, nome, senha, email, cpf, cep, numero, telefone, imagem FROM tb_clientes";
 
                     //Cria o comando Mysql
                     using (MySqlCommand cmd = new MySqlCommand(listagem, consulta))
@@ -287,7 +287,7 @@ namespace LanchesDamaju
                         dadosClientes.Load(reader);
 
                         //Atribui a tabela
-                        dgvLanches.DataSource = dadosClientes;
+                        dgvClientes.DataSource = dadosClientes;
                     }
                 }
             }
